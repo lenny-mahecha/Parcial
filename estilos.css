@@ -1,0 +1,515 @@
+/* estilos.css: estilos propios de Business Alliance (Bootstrap hace la maquetación base) */
+
+:root {
+  --fondo: #f5f5f5;
+  --negro: #111111;
+  --gris: #6b6b6b;
+  --linea: #d9d9d9;
+  --gris-insignia: #8a9598;
+}
+
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  background: var(--fondo);
+  color: var(--negro);
+  overflow-x: hidden; /* evita scroll horizontal por las animaciones laterales */
+}
+
+.seccion {
+  padding: 70px 12px;
+}
+
+.titulo {
+  font-size: 2.4rem;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.texto-gris {
+  color: var(--gris);
+}
+
+/* ---------- Barra de navegación ---------- */
+.barra {
+  background: var(--fondo);
+}
+
+.marca {
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+
+.submarca {
+  font-size: 0.7rem;
+  color: var(--gris);
+}
+
+.enlace-menu {
+  position: relative;
+  color: var(--negro) !important;
+  font-size: 0.95rem;
+}
+
+/* HOVER 1: línea que crece debajo de los enlaces del menú */
+.enlace-menu::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  bottom: 4px;
+  width: 0;
+  height: 1px;
+  background: var(--negro);
+  transition: width 0.3s;
+}
+
+.enlace-menu:hover::after {
+  width: calc(100% - 16px);
+}
+
+/* ---------- Botones ---------- */
+.btn-blanco,
+.btn-negro,
+.btn-borde {
+  border-radius: 30px;
+  padding: 10px 28px;
+  font-weight: 500;
+  transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+.btn-blanco {
+  background: #ffffff;
+  color: var(--negro);
+}
+
+.btn-negro {
+  background: var(--negro);
+  color: #ffffff;
+}
+
+.btn-borde {
+  border: 1px solid var(--negro);
+  color: var(--negro);
+}
+
+.btn-sm.btn-borde {
+  padding: 4px 14px;
+}
+
+/* HOVER 2: botones */
+.btn-blanco:hover {
+  background: var(--negro);
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.btn-negro:hover {
+  background: #3a3a3a;
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.btn-borde:hover {
+  background: var(--negro);
+  color: #ffffff;
+}
+
+/* ---------- Portada ---------- */
+.portada {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  height: 480px;
+  background: #9a9a9a;
+}
+
+.portada-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+}
+
+.portada-texto {
+  position: absolute;
+  inset: 0;
+  padding: 60px 50px;
+  color: #ffffff;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0));
+  animation: entrar 1s ease-out; /* ANIMACIÓN 1 */
+}
+
+.portada-texto h1 {
+  font-size: 3.4rem;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.portada-texto p {
+  max-width: 420px;
+  font-weight: 300;
+  font-size: 1.1rem;
+  margin: 18px 0 32px;
+}
+
+@keyframes entrar {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Nosotros ---------- */
+.cifra {
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ---------- Logos aliados ---------- */
+.logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.logos img {
+  height: 30px;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+/* HOVER 3: los logos toman color */
+.logos img:hover {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+/* ---------- Catálogo (carrusel) ---------- */
+.tarjeta-catalogo {
+  display: block;
+  color: var(--negro);
+  text-decoration: none;
+}
+
+.tarjeta-img {
+  border-radius: 22px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.tarjeta-img img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s;
+}
+
+/* HOVER 4: zoom a la imagen del catálogo */
+.tarjeta-catalogo:hover .tarjeta-img img {
+  transform: scale(1.08);
+}
+
+.tarjeta-catalogo h5 {
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.flecha {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid #9a9a9a;
+  background: transparent;
+  transition: background 0.3s, color 0.3s;
+}
+
+.flecha.oscura {
+  background: var(--negro);
+  border-color: var(--negro);
+  color: #ffffff;
+}
+
+.flecha:hover {
+  background: var(--negro);
+  color: #ffffff;
+}
+
+/* ---------- Inmuebles disponibles ---------- */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filtro {
+  border: 1px solid #9a9a9a;
+  border-radius: 30px;
+  padding: 6px 16px;
+  color: var(--negro);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.3s, color 0.3s;
+}
+
+.filtro:hover,
+.filtro.activo {
+  background: var(--negro);
+  border-color: var(--negro);
+  color: #ffffff;
+}
+
+.propiedad {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 100%;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* HOVER 5: la tarjeta del inmueble se levanta */
+.propiedad:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+}
+
+.propiedad-img {
+  position: relative;
+}
+
+.propiedad-img img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.operacion {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* ---------- Cómo trabajamos ---------- */
+.foto-proceso {
+  position: relative;
+}
+
+.foto-proceso img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+.insignia {
+  position: absolute;
+  top: -40px;
+  right: -30px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: var(--gris-insignia);
+  color: #ffffff;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 6px solid var(--fondo);
+  animation: flotar 3s ease-in-out infinite; /* ANIMACIÓN 2 */
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+.paso {
+  display: flex;
+  gap: 18px;
+  padding: 22px 12px;
+  border-bottom: 1px solid #9a9a9a;
+  border-radius: 12px;
+  transition: background 0.3s;
+}
+
+/* HOVER 6: fondo blanco en cada paso */
+.paso:hover {
+  background: #ffffff;
+}
+
+.paso-icono {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--negro);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: transform 0.3s;
+}
+
+.paso:hover .paso-icono {
+  transform: rotate(-12deg) scale(1.1);
+}
+
+.paso h5 {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.paso p {
+  color: var(--gris);
+  font-size: 0.9rem;
+  margin: 0;
+  max-width: 400px;
+}
+
+/* ---------- Contacto ---------- */
+.contacto {
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 40px;
+}
+
+.form-control,
+.form-select {
+  border-radius: 14px;
+  border: 1px solid var(--linea);
+  padding: 10px 14px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--negro);
+  box-shadow: none;
+}
+
+.enlace-flecha {
+  color: var(--negro);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.enlace-flecha i {
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+.enlace-flecha:hover i {
+  transform: translateX(6px);
+}
+
+/* ---------- Pie de página ---------- */
+.pie {
+  background: var(--negro);
+  color: #ffffff;
+  border-radius: 28px 28px 0 0;
+}
+
+.enlace-pie {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.enlace-pie:hover {
+  color: #ffffff;
+}
+
+/* ---------- Botón flotante de WhatsApp ---------- */
+.whatsapp {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #ffffff;
+  font-size: 1.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: latido 2s infinite; /* ANIMACIÓN 3 */
+  transition: transform 0.3s;
+}
+
+.whatsapp:hover {
+  color: #ffffff;
+  transform: scale(1.12);
+}
+
+@keyframes latido {
+  0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+  70%  { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* ---------- Página de gracias ---------- */
+.gracias {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gracias-caja {
+  text-align: center;
+  animation: entrar 0.7s ease-out;
+}
+
+.check {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: var(--negro);
+  color: #ffffff;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: rebote 0.8s ease-out; /* ANIMACIÓN 4 */
+}
+
+@keyframes rebote {
+  0%   { transform: scale(0); }
+  60%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* ---------- Responsive ---------- */
+/* Tablets */
+@media (max-width: 991px) {
+  .portada { height: 420px; }
+  .portada-texto { padding: 40px 32px; }
+  .portada-texto h1 { font-size: 2.6rem; }
+  .foto-proceso img { height: 420px; }
+  .insignia { right: 10px; }
+  .logos { justify-content: center; }
+}
+
+/* Celulares */
+@media (max-width: 575px) {
+  .seccion { padding: 50px 12px; }
+  .titulo { font-size: 1.9rem; }
+  .portada { height: 380px; border-radius: 22px; }
+  .portada-texto { padding: 32px 22px; background: rgba(0, 0, 0, 0.35); }
+  .portada-texto h1 { font-size: 2.1rem; }
+  .tarjeta-img img { height: 260px; }
+  .foto-proceso img { height: 340px; }
+  .insignia { width: 100px; height: 100px; font-size: 0.85rem; top: -25px; }
+  .contacto { padding: 24px; }
+  .whatsapp { width: 52px; height: 52px; font-size: 1.6rem; }
+}
